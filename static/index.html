@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliance Bot - PDF Document Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Compliance Bot</h1>
+            <p>Extract compliance information from PDF documents using AI</p>
+        </header>
+
+        <div class="upload-section">
+            <div id="dropZone" class="drop-zone">
+                <div class="drop-zone-content">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <h3>Drop PDF file here or click to upload</h3>
+                    <p>Maximum file size: 10MB</p>
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                </div>
+            </div>
+
+            <div id="fileName" class="file-name"></div>
+            
+            <button id="extractBtn" class="extract-btn" disabled>
+                Extract Compliance Data
+            </button>
+        </div>
+
+        <div id="loadingSection" class="loading-section hidden">
+            <div class="spinner"></div>
+            <p>Processing document...</p>
+        </div>
+
+        <div id="resultsSection" class="results-section hidden">
+            <h2>Extracted Compliance Information</h2>
+            
+            <div id="summarySection" class="summary-section">
+                <h3>Summary</h3>
+                <p id="summaryText"></p>
+                <p id="totalAmount" class="total-amount"></p>
+            </div>
+
+            <div class="table-container">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>Requirement</th>
+                            <th>Amount Owed</th>
+                            <th>Deadline</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <button id="resetBtn" class="reset-btn">Process Another Document</button>
+        </div>
+
+        <div id="errorSection" class="error-section hidden">
+            <h3>⚠️ Error</h3>
+            <p id="errorMessage"></p>
+            <button id="errorResetBtn" class="reset-btn">Try Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
